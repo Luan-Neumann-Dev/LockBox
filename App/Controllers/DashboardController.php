@@ -5,9 +5,12 @@ namespace App\Controllers;
 class DashboardController {
 
     public function __invoke() {
+        if (! auth()) {
+            return redirect('/login');
+        }
 
-        echo 'DashboardController - invoke';
 
+        echo 'Estou logado ' . auth()->nome;
     }
 
 }
