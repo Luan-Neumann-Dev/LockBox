@@ -5,7 +5,7 @@ namespace App\Controllers;
 class LoginController {
 
     public function index() {
-        echo 'Login Controller Index';
+        view('login');
     }
 
     public function login() {
