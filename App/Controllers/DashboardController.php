@@ -9,8 +9,9 @@ class DashboardController {
             return redirect('/login');
         }
 
-
-        echo 'Estou logado ' . auth()->nome;
+        return view('dashboard', [
+            'user' => auth()
+        ]);
     }
 
 }
