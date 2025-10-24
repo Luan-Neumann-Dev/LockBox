@@ -20,9 +20,7 @@
             <form action="/registrar" method="post">
                 <div class="card">
                     <div class="card-body">
-                        <div class="card-title">
-                            Crie a sua conta
-                        </div>
+                        <div class="card-title text-xl">Crie a sua conta</div>
 
                         <label class="form-control">
                             <div class="label">
