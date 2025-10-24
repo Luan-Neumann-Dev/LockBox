@@ -2,16 +2,20 @@
 
 use App\Controllers\DashboardController;
 use App\Controllers\LogoutController;
+use App\Controllers\Notas\CriarController;
 use App\Controllers\RegisterController;
 use Core\Route;
 use App\Controllers\IndexController;
 use App\Controllers\LoginController;
+
 
 (new Route())
     ->get('/', IndexController::class)
     ->get('/login', [LoginController::class, 'index'])
     ->post('/login', [LoginController::class, 'login'])
     ->get('/dashboard', DashboardController::class)
+    ->get('/notas/criar', [CriarController::class, 'index'])
+    ->post('/notas/criar', [CriarController::class, 'store'])
     ->get('/logout', LogoutController::class)
     ->get('/registrar', [RegisterController::class, 'index'])
     ->post('/registrar', [RegisterController::class, 'register'])
