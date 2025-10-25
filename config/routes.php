@@ -3,8 +3,7 @@
 use App\Controllers\IndexController;
 use App\Controllers\LoginController;
 use App\Controllers\LogoutController;
-use App\Controllers\Notas\CriarController;
-use App\Controllers\Notas\DashboardController;
+use App\Controllers\Notas;
 use App\Controllers\RegisterController;
 
 use App\Middlewares\AuthMiddleware;
@@ -21,9 +20,9 @@ use Core\Route;
     ->post('/registrar', [RegisterController::class, 'register'], GuestMiddleware::class)
 
     //AUTH ROUTES
-    ->get('/dashboard', DashboardController::class, AuthMiddleware::class)
-    ->get('/notas/criar', [CriarController::class, 'index'], AuthMiddleware::class)
-    ->post('/notas/criar', [CriarController::class, 'store'], AuthMiddleware::class)
+    ->get('/notas', Notas\IndexController::class, AuthMiddleware::class)
+    ->get('/notas/criar', [Notas\CriarController::class, 'index'], AuthMiddleware::class)
+    ->post('/notas/criar', [Notas\CriarController::class, 'store'], AuthMiddleware::class)
     ->get('/logout', LogoutController::class, AuthMiddleware::class)
 
     ->run();
