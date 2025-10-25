@@ -5,7 +5,7 @@
 
     <div class="flex-none">
         <ul class="menu menu-horizontal px-1">
-            <li><a href="/mostrar">👁️</a></li>
+            <li><a href="/notas">👁️</a></li>
             <li>
                 <details>
                     <summary><?= auth()->nome ?></summary>
