@@ -2,6 +2,8 @@
 
 namespace App\Controllers\Notas;
 
+use Core\Validacao;
+
 class VisualizarController
 {
     public function mostrar() {
