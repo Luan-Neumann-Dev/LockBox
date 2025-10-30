@@ -1,0 +1,21 @@
+{
+    "name": "luan/lock-box",
+    "authors": [
+        {
+            "name": "Luan Neumann Dev",
+            "email": "luan.neumann.dev@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Core\\": "Core/",
+            "App\\": "app/"
+        },
+        "files": [
+            "./Core/functions.php"
+        ]
+    },
+    "require-dev": {
+        "laravel/pint": "^1.25"
+    }
+}

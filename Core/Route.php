@@ -2,15 +2,17 @@
 
 namespace Core;
 
-class Route {
+class Route
+{
     public $routes = [];
 
-    public function addRoute($httpMethod, $uri, $controller, $middleware = null) {
+    public function addRoute($httpMethod, $uri, $controller, $middleware = null)
+    {
         if (is_string($controller)) {
             $data = [
                 'class' => $controller,
                 'method' => '__invoke',
-                'middleware' => $middleware
+                'middleware' => $middleware,
             ];
         }
 
@@ -18,39 +20,48 @@ class Route {
             $data = [
                 'class' => $controller[0],
                 'method' => $controller[1],
-                'middleware' => $middleware
+                'middleware' => $middleware,
             ];
         }
 
         $this->routes[$httpMethod][$uri] = $data;
     }
 
-    public function get($uri, $controller, $middleware = null) {
+    public function get($uri, $controller, $middleware = null)
+    {
         $this->addRoute('GET', $uri, $controller, $middleware);
+
         return $this;
     }
 
-    public function post($uri, $controller, $middleware = null) {
+    public function post($uri, $controller, $middleware = null)
+    {
         $this->addRoute('POST', $uri, $controller, $middleware);
+
         return $this;
     }
 
-    public function put($uri, $controller, $middleware = null) {
+    public function put($uri, $controller, $middleware = null)
+    {
         $this->addRoute('PUT', $uri, $controller, $middleware);
+
         return $this;
     }
 
-    public function delete($uri, $controller, $middleware = null) {
+    public function delete($uri, $controller, $middleware = null)
+    {
         $this->addRoute('DELETE', $uri, $controller, $middleware);
+
         return $this;
     }
 
-    public function run() {
+    public function run()
+    {
         $uri = parse_url($_SERVER['REQUEST_URI'])['path'];
 
         $httpMethod = request()->post('__method', $_SERVER['REQUEST_METHOD']);
 
-        if (!isset($this->routes[$httpMethod][$uri])){
+        if (! isset($this->routes[$httpMethod][$uri])) {
             abort(404);
         }
 
@@ -61,7 +72,7 @@ class Route {
         $middleware = $routeInfo['middleware'];
 
         if ($middleware) {
-            $m = new $middleware();
+            $m = new $middleware;
             $m->handle();
         }
 

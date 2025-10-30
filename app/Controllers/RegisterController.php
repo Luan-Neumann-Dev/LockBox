@@ -7,7 +7,6 @@ use Core\Validacao;
 
 class RegisterController
 {
-
     public function index()
     {
         return view('registrar', template: 'guest');
@@ -16,9 +15,9 @@ class RegisterController
     public function register()
     {
         $validacao = Validacao::validar([
-            "nome" => ["required"],
-            "email" => ["required", "email", 'confirmed', 'unique:users'],
-            "senha" => ["required", "min:8", "max:30", 'strong'],
+            'nome' => ['required'],
+            'email' => ['required', 'email', 'confirmed', 'unique:users'],
+            'senha' => ['required', 'min:8', 'max:30', 'strong'],
         ], request()->all());
 
         if ($validacao->naoPassou()) {
@@ -32,7 +31,7 @@ class RegisterController
             params: [
                 'nome' => request()->post('nome'),
                 'email' => request()->post('email'),
-                'senha' => password_hash(request()->post('senha'), PASSWORD_DEFAULT)
+                'senha' => password_hash(request()->post('senha'), PASSWORD_DEFAULT),
             ]
         );
 

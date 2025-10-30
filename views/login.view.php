@@ -1,5 +1,5 @@
-<?php 
-    $validacoes = flash()->get('validacoes') 
+<?php
+$validacoes = flash()->get('validacoes')
 ?>
 
 <div class="grid grid-cols-2">
@@ -35,9 +35,9 @@
                                 value="<?= old('email') ?>"
                             />
 
-                            <?php if (isset($validacoes['email'])): ?>
+                            <?php if (isset($validacoes['email'])) { ?>
                                 <div class="mt-1 text-xs text-error"><?= $validacoes['email'][0] ?></div>
-                            <?php endif; ?>
+                            <?php } ?>
 
                         </label>
 
@@ -48,9 +48,9 @@
 
                             <input type="password" name="senha" class="input input-bordered w-full max-w-xs bg-white" />
 
-                            <?php if (isset($validacoes['senha'])): ?>
+                            <?php if (isset($validacoes['senha'])) { ?>
                                 <div class="mt-1 text-xs text-error"><?= $validacoes['senha'][0] ?></div>
-                            <?php endif; ?>
+                            <?php } ?>
                         </label>
 
                         <div class="card-actions">
